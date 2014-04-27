@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Keeper of things" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -17,6 +17,11 @@
 
     <div class="row">
       <div class="large-12 columns">
+        <h1>
+          Keeper of things
+        </h1>
+        <hr />
+
         <div>
           <% if user_signed_in? %>
             <%= link_to 'Logoff', destroy_user_session_path, method: :delete %>
