@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Acme Widget" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <p>&nbsp;</p>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>
+          Acme Widget App
+        </h1>
+        <hr />
+
+        <div>
+          <% if user_signed_in? %>
+            TODO: logoff
+          <% end %>
+        </div>
+
+        <div style="background-color: #cccccc">
+          <%= yield %>
+        </div>
+
+        <div>
+          <% if user_signed_in? %>
+            Logged in as: <%= current_user.email %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
