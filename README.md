@@ -31,7 +31,7 @@ Doorkeeper::AccessToken
 ```ruby
 # ======== Acme Widget
 'GET "/auth/keeper" at 2014-04-27 17:02:03 -0700'
-'invokes the OmniAuth strategy 'keeper'
+'invokes the OmniAuth strategy keeper'
 # ======== Keeper
 'GET "/oauth/authorize?..." at 2014-04-27 17:02:03 -0700'
 'Completed 401 Unauthorized in 28ms'
@@ -62,7 +62,7 @@ Doorkeeper::AccessToken
 ```ruby
 # ======== Acme Widget
 'GET "/auth/keeper" at 2014-04-27 17:31:32 -0700'
-'invokes the OmniAuth strategy 'keeper'
+'invokes the OmniAuth strategy keeper'
 # ======== Keeper
 'GET "/oauth/authorize?..." at 2014-04-27 17:31:32 -0700'
 'Render /app/views/doorkeeper/authorizations/new'
@@ -88,7 +88,7 @@ Doorkeeper::AccessToken
 ```ruby
 # ======== Acme Widget
 'GET "/auth/keeper" at 2014-04-27 17:47:38 -0700'
-'invokes the OmniAuth strategy 'keeper'
+'invokes the OmniAuth strategy keeper'
 # ======== Keeper
 'GET "/oauth/authorize?..." at 2014-04-27 17:47:38 -0700'
 'By pass authorization page for "Acme Widget" application'
