@@ -9,15 +9,12 @@ _**WIP:** Work in progress_
 * keeper_of_things
   * run at http://localhost:3000/
   * Uses devise and doorkeeper to manage user accounts
+  * see public directory for various client side oauth examples
 * acme_widget_app
   * run at http://localhost:3010/
   * Application that manages Widgets
   * Must Authenticate via user account from `keeper_of_things` application
-* back_end_consumer
-  * TODO
-* front_end_consumer
-  * TODO
-  
+
 ### Doorkeeper models
 
 ```
@@ -25,7 +22,10 @@ Doorkeeper::Application
 Doorkeeper::AccessGrant
 Doorkeeper::AccessToken
 ```
-  
+
+
+## Acme Widget App
+
 ### Doorkeeper OAuth flow, user is NOT logged in
 
 ```ruby
@@ -36,7 +36,7 @@ Doorkeeper::AccessToken
 'GET "/oauth/authorize?..." at 2014-04-27 17:02:03 -0700'
 'Completed 401 Unauthorized in 28ms'
 'GET "/users/sign_in" at 2014-04-27 17:02:03 -0700'
-# User enters login credentials 
+# User enters login credentials
 'POST "/users/sign_in" at 2014-04-27 17:03:31 -0700'
 # User presented with authorize screen
 'GET "/oauth/authorize?..." at 2014-04-27 17:03:31 -0700'
@@ -107,6 +107,31 @@ Doorkeeper::AccessToken
 'Now at http://localhost:3010/ with the user authenticated and authorized'
 ```
 
+## Client side Oauth examples
+
+Setup doorkeeper application
+
+```
+cd keeper_of_things
+bundle
+rake db:create:all
+rake db:migrate
+rake db:seed
+rails server
+```
+
+### jso2
+
+Go to [http://localhost:3000/jso2.html](http://localhost:3000/jso2.html) and watch the console.
+
+You should be redirected to the login page: Use the following to login, or create a new account.
+
+* test-1@example.com
+* 11122211
+
+Click the 'Show Token' link, if using a short time out you should receive a new token shortly.
+
+NOTE: seems to work even without [https://github.com/doorkeeper-gem/doorkeeper/wiki/Enable-Refresh-Token-Credentials](Refresh Tokens) configured.
 
 ## Resources
 
@@ -114,3 +139,18 @@ Doorkeeper::AccessToken
 * [http://railscasts.com/episodes/235-devise-and-omniauth-revised](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
 * [https://github.com/doorkeeper-gem/doorkeeper](https://github.com/doorkeeper-gem/doorkeeper)
 * [https://github.com/intridea/omniauth-oauth2](https://github.com/intridea/omniauth-oauth2)
+
+
+## Javascript OAuth Clients and other links
+
+* http://stackoverflow.com/questions/4121570/oauth2-for-javascript
+* https://github.com/andreassolberg/jso/tree/master
+* https://github.com/andreassolberg/jso/tree/version2
+* https://developers.google.com/accounts/docs/OAuth2UserAgent
+* https://gist.github.com/hannestyden/563893
+* https://github.com/ox-it/javascript-oauth2
+* https://github.com/enginous/angular-oauth
+* http://devcenter.kinvey.com/angular/tutorials/how-to-implement-safe-signin-via-oauth
+* http://adodson.com/hello.js/
+* http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified#browser-based-apps
+
