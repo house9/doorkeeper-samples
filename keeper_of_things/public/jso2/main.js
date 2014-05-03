@@ -22,21 +22,35 @@ define(function(require, exports, module) {
 
   $(document).ready(function() {
 
-    var o = new OAuth('jso2', {
+    var config = {
       client_id: "68d256793f4eb5f8492c340d40f88ecf8d28db034d405c9394b23b84b052b45b",
-      redirect_uri: "http://localhost:3000/jso2.html",
-      authorization: "http://localhost:3000/oauth/authorize"
+      base_url: "http://localhost:3000",
+      authorize_endpoint: "/oauth/authorize",
+      user_endpoint: "/api/v1/me"
+    }
+
+    // configure the OAuth client
+    var o = new OAuth('jso2', {
+      client_id: config.client_id,
+      redirect_uri: window.location, // config.base_url + "/jso2.html",
+      authorization: config.base_url + config.authorize_endpoint
     });
 
+    // authorize OAuth server
     o.callback();
 
+    // make a request passing the token in the 'Authorization' header, use 'Bearer'
     o.ajax({
-      url: "http://localhost:3000/api/v1/me",
+      url: config.base_url + config.user_endpoint,
       dataType: 'json',
       success: function(data) {
-        console.log("Response (app):");
+        console.log("Response Data:");
         console.log(data);
-        $(".loader-hideOnLoad").hide();
+
+        setTimeout(function () {
+          $(".loader-hideOnLoad").hide('slow');
+          $("#main").show('slow');
+        }, 1000)
       }
     });
 

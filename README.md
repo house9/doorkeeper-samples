@@ -114,7 +114,7 @@ Setup doorkeeper application
 ```
 cd keeper_of_things
 bundle
-rake db:create:all
+rake db:create
 rake db:migrate
 rake db:seed
 rails server
