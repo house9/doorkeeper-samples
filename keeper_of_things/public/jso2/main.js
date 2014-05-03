@@ -51,12 +51,26 @@ define(function(require, exports, module) {
           $(".loader-hideOnLoad").hide('slow');
           $("#main").show('slow');
         }, 1000)
+      },
+      error: function (event, xhr, settings, exception) {
+        console.log(xhr.status);
       }
     });
 
     window.showAuthToken = function () {
       o.getToken(function (token) {
         console.log(token.access_token);
+      });
+    };
+
+    window.getItems = function () {
+      o.ajax({
+        url: config.base_url + "/api/v1/items",
+        dataType: 'json',
+        success: function(data) {
+          console.log("Item Data:");
+          console.log(data);
+        }
       });
     };
   });
