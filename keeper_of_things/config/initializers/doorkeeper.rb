@@ -26,6 +26,9 @@ Doorkeeper.configure do
   # If you want to disable expiration, set this to nil.
   # access_token_expires_in 2.hours
 
+  # make it super short for testing with jso2
+  # access_token_expires_in 2.minutes
+
   # Issue access tokens with refresh token (disabled by default)
   # use_refresh_token
 
@@ -65,6 +68,11 @@ Doorkeeper.configure do
   skip_authorization do |resource_owner, client|
     if client.application.name == "Acme Widgets"
       Rails.logger.debug " ----------- By pass authorization page for 'Acme Widget' application -----------"
+      true
+    end
+
+    if client.application.name == "JSO 2"
+      Rails.logger.debug " ----------- By pass authorization page for 'JSO 2' application -----------"
       true
     end
   end
