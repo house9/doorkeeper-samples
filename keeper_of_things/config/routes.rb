@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/auth/:provider/callback', to: 'auth_token_sessions#create'
+  get '/auth/:provider/token', to: 'auth_token_sessions#token'
+
   get 'home/index'
   root 'home#index'
 end

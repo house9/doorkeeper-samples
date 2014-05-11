@@ -131,7 +131,7 @@ You should be redirected to the login page: Use the following to login, or creat
 
 Click the 'Show Token' link, if using a short time out you should receive a new token shortly.
 
-NOTE: seems to work even without [https://github.com/doorkeeper-gem/doorkeeper/wiki/Enable-Refresh-Token-Credentials](Refresh Tokens) configured.
+NOTE: seems to work even without [Refresh Tokens](https://github.com/doorkeeper-gem/doorkeeper/wiki/Enable-Refresh-Token-Credentials) configured.
 
 Click the 'Get Items' link to make authorized requests which fetch 'Item' records associated with the user.
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>OAuth 2 User Agent Authentication Flow Demo</title>
+    <!-- taken from https://gist.github.com/hannestyden/563893 -->
+    <script type="text/javascript" charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      var token = null;
+
+      $(function () {
+        var caller = function (path) {
+          $.ajax({
+            headers: {
+              'Authorization': "Bearer " + token,
+              'Accept': "application/json"
+            },
+            url: "http://localhost:3000/" + path,
+            success: function (response) {
+              console.log(response)
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR.status);
+              console.log(jqXHR);
+            }
+          });
+        }
+
+        // check /me
+        // - if 401
+        //   - call token
+        //    - if 401 redirect to login
+        // - else
+        //   - render
+        $("#fetch-me").click(function () {
+          caller("api/v1/me");
+        });
+
+        $("#fetch-token").click(function () {
+          caller("/auth/internal_app_one/token");
+        });
+
+      });
+    </script>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <a id="fetch-me">Fetch Me</a> |
+      <a id="fetch-token">Fetch Token</a> |
+      <a id="go-to-auth" href="/auth/keeper">Go to Auth</a>  |
+      <a id="fetch-items">Fetch Items</a>
+    </div>
+<!--     <div class="authenticate hidden">
+      <a class="connect" href="">Connect</a>
+    </div>
+
+    <div class="authenticated hidden">
+      <p>
+        You are using token
+        <span class="token">[no token]</span>.
+      </p>
+
+      <p>
+        Your username is
+        <span class="user">[no username]</span>.
+      </p>
+    </div> -->
+  </body>
+</html>

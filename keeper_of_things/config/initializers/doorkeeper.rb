@@ -75,6 +75,11 @@ Doorkeeper.configure do
       Rails.logger.debug " ----------- By pass authorization page for 'JSO 2' application -----------"
       true
     end
+
+    if client.application.name == ENV['INTERNAL_APP_ONE_OAUTH_NAME']
+      Rails.logger.debug " ----------- By pass authorization page for (#{ENV['INTERNAL_APP_ONE_OAUTH_NAME']}) application -----------"
+      true
+    end
   end
 
   # WWW-Authenticate Realm (default "Doorkeeper").
