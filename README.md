@@ -141,6 +141,7 @@ Click the 'Get Items' link to make authorized requests which fetch 'Item' record
 * [http://railscasts.com/episodes/235-devise-and-omniauth-revised](http://railscasts.com/episodes/235-devise-and-omniauth-revised)
 * [https://github.com/doorkeeper-gem/doorkeeper](https://github.com/doorkeeper-gem/doorkeeper)
 * [https://github.com/intridea/omniauth-oauth2](https://github.com/intridea/omniauth-oauth2)
+* [OAuth Implicit Grant with Grape, Doorkeeper and AngularJS](http://codetunes.com/2014/oauth-implicit-grant-with-grape-doorkeeper-and-angularjs/)
 
 
 ## Javascript OAuth Clients and other links
